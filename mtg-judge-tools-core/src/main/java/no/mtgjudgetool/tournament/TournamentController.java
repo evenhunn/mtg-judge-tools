@@ -21,15 +21,15 @@ public class TournamentController {
     TournamentService tournamentService;
 
     @PostMapping("/create")
-    public ResponseEntity<String> createTournament(
+    public String createTournament(
             @RequestBody String tournamentJson
     ) {
         Long id = null;
-        try {
+        try
             id = tournamentService.createTournament(tournamentJson);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return ResponseEntity.status(HttpStatus.OK).body("tournament created with id: " + id);
+        return "tournament created with id: " + id;
     }
 }
