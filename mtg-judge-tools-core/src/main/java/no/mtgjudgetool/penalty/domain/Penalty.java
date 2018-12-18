@@ -14,7 +14,7 @@ import org.springframework.data.annotation.Id;
 public class Penalty {
 
     @Id
-    private Long id;
+    private String id;
 
     private Long tournamentId;
     private Integer round;

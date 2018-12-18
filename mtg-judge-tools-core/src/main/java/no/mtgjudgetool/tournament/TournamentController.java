@@ -1,8 +1,6 @@
 package no.mtgjudgetool.tournament;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,13 +21,8 @@ public class TournamentController {
     @PostMapping("/create")
     public String createTournament(
             @RequestBody String tournamentJson
-    ) {
-        Long id = null;
-        try
-            id = tournamentService.createTournament(tournamentJson);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    ) throws IOException {
+        Long id = tournamentService.createTournament(tournamentJson);
         return "tournament created with id: " + id;
     }
 }
